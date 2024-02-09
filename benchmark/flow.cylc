@@ -16,21 +16,8 @@
 [scheduling]
     [[graph]]
         R1 = """
-            # these two tasks should run and succeed
+            
             directives_1 => fin
-            directives_2 => fin
-
-            # the "etl" task should fail if the "execution time limit" has been
-            # correctly implemented
-            etl:fail? => execution_time_limit_worked
-            etl:succeed? => execution_time_limit_did_not_work
-
-            # Rose
-            rose => fin
-
-            # Isodatetime
-            isodatetime => fin
-
         """
 
 
@@ -57,59 +44,6 @@
             # TODO: convert these directives from SLURM to AWS format
             --mem=2Gn  # memory: 2 Gb
             --tasks=2  # vcpus: 2, physical_cpus: 1
-
-    [[directives_2]]
-        script = true  # TODO: check AWS provisions us with what we asked for
-        execution time limit = PT30M  # time: 30 mins
-        [[[directives]]]
-            # TODO: convert these directives from SLURM to AWS format
-            --mem=10Gn  # memory: 10 Gb
-            --tasks=12  # vcpus: 12, physical_cpus: 6
-
-
-    # -- Execution Time Limit --
-
-    # a task which should always fail
-    [[etl]]
-        # a commmand that takes 20 seconds to run
-        script = sleep 20
-        # a configuration which kills the job if it takes more thant 5 seconds
-        execution time limit = PT5S
-
-    # this task will be run if etl works
-    [[execution_time_limit_worked]]
-        script = true
-
-    # this task will be run if etl does not work
-    [[execution_time_limit_did_not_work]]
-        script = false
-
-
-    # -- Rose --
-
-    # A common pattern is for Cylc tasks to run Rose Applications
-    [[rose]]
-        pre-script = eval $(rose task-env)
-        script = rose task-run
-        [[[environment]]]
-            # this task will run this configuration app/myapp/rose-app.conf
-            ROSE_TASK_APP = myapp
-
-
-    # -- Isodatetime (optional) --
-
-    # Many cycling workflows rely on the isodatetime command, this is a simple
-    # utility for datetime arithmetic, it's a dependency of Cylc of guaranteed
-    # to be installed, however, usually requires a wrapper script
-    # (just copy the Cylc/Rose wrapper script and change the name to "isodatetime")
-    [[isodatetime]]
-        script = test "${next_year}" -eq 2025
-        [[[environment]]]
-            next_year = """
-                $(isodatetime --offset=P1Y --print-format=CCYY)
-            """
-
-
 
     # -- Fin --
 
