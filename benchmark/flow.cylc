@@ -42,7 +42,7 @@
     # this configures all tasks to run via aws_batch
     [[root]]
         # platform = localhost  # run jobs locally
-        platform = aws_batch  # submit jobs to aws batch
+        platform = batch_aws  # submit jobs to aws batch
 
 
     # -- Directives --
