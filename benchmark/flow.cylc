@@ -74,10 +74,10 @@
 
     # a task which should always fail
     [[etl]]
-        # a commmand that takes 20 seconds to run
-        script = sleep 20
+        # a commmand that takes 120 seconds to run
+        script = sleep 120
         # a configuration which kills the job if it takes more thant 5 seconds
-        execution time limit = PT5S
+        execution time limit = PT1M
 
     # this task will be run if etl works
     [[execution_time_limit_worked]]
