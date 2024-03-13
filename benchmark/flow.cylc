@@ -127,6 +127,8 @@
                 -n broadcast_2 \
                 -p "${CYLC_TASK_CYCLE_POINT}" \
                 -s '[environment]CMD=true'
+            echo ("This is the conda_path: ${CONDA_PATH}")
+            echo ("This is the datafeed_stage: ${DATAFEED_STAGE}")
             sleep 5
         """
 
