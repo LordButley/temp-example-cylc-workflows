@@ -55,8 +55,8 @@
     # (and also things like billing and queues which aren't relevant to your use case).
     [[directives_1]]
         script = """
-            echo ("This is the conda_path: ${CONDA_PATH}") \
-            echo ("This is the datafeed_stage: ${DATAFEED_STAGE}")
+            echo "This is the conda_path: ${CONDA_PATH}" \
+            echo "This is the datafeed_stage: ${DATAFEED_STAGE}"
         """  # TODO: check AWS provisions us with what we asked for
         execution time limit = PT5S  # time: 5 seconds
         [[[directives]]]
