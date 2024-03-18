@@ -1,7 +1,3 @@
-#!jinja2
-{% from 'cylc.flow' import LOG %}
-{% do LOG.info('EPP Precipitation Type suite') %}
-
 {% import 'install_suite' as install_suite %}
 {% set suite_build_vars = {
     'PARAFLOW_REPOSITORY': PARAFLOW_REPOSITORY,
