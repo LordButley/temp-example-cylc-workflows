@@ -4,8 +4,8 @@
 
 {% import 'install_suite' as install_suite %}
 {% set suite_build_vars = {
-    'DATAFEED_PATH': DATAFEED_PATH
-    'CONDA_PATH': CONDA_PATH,
+    'DATAFEED_PATH': DATAFEED_PATH,
+    'CONDA_PATH': CONDA_PATH
 } %}
 {% do install_suite.build_suite(suite_build_vars) %}
 
