@@ -54,12 +54,16 @@
     # * Memory
     # (and also things like billing and queues which aren't relevant to your use case).
     [[directives_1]]
-        script = true  # TODO: check AWS provisions us with what we asked for
+        script = """
+            echo ("This is the conda_path: ${CONDA_PATH}") \
+            echo ("This is the datafeed_stage: ${DATAFEED_STAGE}")
+        """  # TODO: check AWS provisions us with what we asked for
         execution time limit = PT5S  # time: 5 seconds
         [[[directives]]]
             # TODO: convert these directives from SLURM to AWS format
             --mem=2Gn  # memory: 2 Gb
             --tasks=2  # vcpus: 2, physical_cpus: 1
+
 
     [[directives_2]]
         script = true  # TODO: check AWS provisions us with what we asked for
@@ -68,6 +72,7 @@
             # TODO: convert these directives from SLURM to AWS format
             --mem=10Gn  # memory: 10 Gb
             --tasks=12  # vcpus: 12, physical_cpus: 6
+
 
 
     # -- Execution Time Limit --
@@ -127,8 +132,6 @@
                 -n broadcast_2 \
                 -p "${CYLC_TASK_CYCLE_POINT}" \
                 -s '[environment]CMD=true'
-            echo ("This is the conda_path: ${CONDA_PATH}")
-            echo ("This is the datafeed_stage: ${DATAFEED_STAGE}")
             sleep 5
         """
 
