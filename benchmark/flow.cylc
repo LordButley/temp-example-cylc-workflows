@@ -54,7 +54,7 @@
     # * Memory
     # (and also things like billing and queues which aren't relevant to your use case).
     [[directives_1]]
-        script = echo "this is datafeed_stage: ${DATAFEED_STAGE} this is conda_path ${CONDA_PATH}" >> /mnt/efs/helloworld.txt # TODO: check AWS provisions us with what we asked for
+        script = echo "this is datafeed_stage: ${DATAFEED_STAGE} this is conda_path ${CONDA_PATH}" >> /mnt/efs/helloworld1.txt # TODO: check AWS provisions us with what we asked for
         execution time limit = PT5S  # time: 5 seconds
         [[[directives]]]
             # TODO: convert these directives from SLURM to AWS format
