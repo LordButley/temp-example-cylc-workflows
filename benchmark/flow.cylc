@@ -4,6 +4,8 @@
 
 {% import 'install_suite' as install_suite %}
 {% set suite_build_vars = {
+    'PARAFLOW_REPOSITORY': PARAFLOW_REPOSITORY,
+    'PARAFLOW_VERSION': PARAFLOW_VERSION,
     'DATAFEED_PATH': DATAFEED_PATH,
     'CONDA_PATH': CONDA_PATH
 } %}
