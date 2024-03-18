@@ -1,3 +1,17 @@
+#!jinja2
+{% from 'cylc.flow' import LOG %}
+{% do LOG.info('EPP Precipitation Type suite') %}
+
+{% import 'install_suite' as install_suite %}
+{% set suite_build_vars = {
+    'PARAFLOW_REPOSITORY': PARAFLOW_REPOSITORY,
+    'PARAFLOW_VERSION': PARAFLOW_VERSION,
+    'DATAFEED_STAGE': DATAFEED_STAGE
+    'CONDA_PATH': CONDA_PATH,
+    'SUITE_NAME': SUITE_NAME,
+} %}
+{% do install_suite.build_suite(suite_build_vars) %}
+
 [meta]
     title = Cylc 8 Benchmark
     description = """
@@ -54,7 +68,7 @@
     # * Memory
     # (and also things like billing and queues which aren't relevant to your use case).
     [[directives_1]]
-        script = echo "this is datafeed_stage: $(DATAFEED_STAGE) this is conda_path $(CONDA_PATH) " >> /mnt/efs/helloworld2.txt # TODO: check AWS provisions us with what we asked for
+        script = echo "this is datafeed_stage: $(DATAFEED_STAGE) this is conda_path $(CONDA_PATH) " >> /mnt/efs/helloworld3.txt # TODO: check AWS provisions us with what we asked for
         execution time limit = PT5S  # time: 5 seconds
         [[[directives]]]
             # TODO: convert these directives from SLURM to AWS format
